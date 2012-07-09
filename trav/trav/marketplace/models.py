@@ -1,6 +1,6 @@
 from django.db import models
 from taggit.managers import TaggableManager
-from trav.settings import STATICFILES_DIRS
+from trav.settings import STATICFILES_DIRS, MEDIA_ROOT
 class usr(models.Model):
     username=models.CharField(max_length=30,unique=True)
     firstname=models.CharField(max_length=30)
@@ -20,12 +20,12 @@ class profile(models.Model):
         return self.plcvisited
     
 class Product(models.Model):
-    title = models.CharField(max_length=100)
-    city = models.CharField(max_length=30)
-    category=models.CharField(max_length=30)
-    image=models.ImageField(upload_to=STATICFILES_DIRS)
+    title = models.CharField('Product Name',max_length=100)
+    city = models.CharField('Product City',max_length=30)
+    category=models.CharField('Product Category',max_length=30)
+    image=models.ImageField('Product Picture',upload_to="./prdimg")
     details=models.TextField()
-    sellerid=models.IntegerField()
+    sellerid=models.PositiveIntegerField()
     expiration_date=models.DateField(null=True,blank=True)
     price=models.DecimalField(max_digits=19,decimal_places=4)
     price=models.DecimalField(max_digits=15,decimal_places=4)

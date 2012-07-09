@@ -18,8 +18,9 @@
 		<div class="content">	
 				<div class="btn">Sell</div>
 				{% for object in objects %}
-    <h2>{{ object.title }}</h2>
-    <p>{{ object.content }}</p>
+    <h2>{{ object.title }}</h2><h3>{{ object.category }}</h3>
+    <img src="{{ object.image.url }}"/>
+    <p>{{ object.city }}</p>
     <ul>
         {% for tag in object.tags.all %}
             <li> {{ tag.name }} </li>

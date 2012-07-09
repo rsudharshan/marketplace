@@ -79,6 +79,6 @@ def home(request):
     return render_to_response('home.html',{'user':u})
     #html="<html><body>Hai ",u.username,"</body></html>"
     #return HttpResponse(html)
-    
+        
 def show_object(request):
     return simple.direct_to_template(request, 'home.html', extra_context={'objects':Product.objects.all()})

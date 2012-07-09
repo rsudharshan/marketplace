@@ -9,10 +9,11 @@ from marketplace.views import authenticate
 from marketplace.views import updatepro
 from django.conf import settings
 from settings import DEBUG
+from django.views.generic.simple import direct_to_template
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
-
+imgroot=settings.MEDIA_ROOT,"/prdimg"
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'trav.views.home', name='home'),
@@ -29,7 +30,7 @@ url(r'^logout/$',logout),
 
 # Uncomment the admin/doc line below to enable admin documentation:
 url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+url(r'^media/prdimg/(?P<path>.*)$', 'django.views.static.serve', {'document_root': imgroot}),
 url(r'^test/(?P<user_id>\d+)/$',quiz_guess,name='quiz_guess'),
 # Uncomment the next line to enable the admin:
      url(r'^admin/', include(admin.site.urls)),
