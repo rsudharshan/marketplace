@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Home-Sell,Buy</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css"/>
+		<script type="text/javascript"  src="/static/jquery-1.4.2.js">
+</script>
+<script type="text/javascript">
+       $(document).ready(function() {   
+  	$('#Updates').click(function(){
+		plctovisit=$('#plcvisit').val()
+	 	tovisit=$('#tovisit').val()
+	 	feedback=$('#feedback').val()	 
+	 $.post("/updatepro/",{plc:plctovisit,tovis:tovisit,fdback:feedback}, function(data) {
+         alert(data)
+	 });
+		});
+});
+</script>
+	</head>
+	<body>
+		<div class="container">
+		<div class="header">
+			
+		</div>
+		
+		<div class="content">
+			<form id="frm" action="/updatepro/" method="POST">
+							<h2>Tell us your likes...! </h2>
+
+             <li> <label>Places visited</label><input id="plcvisit" name="plcvisited" class="txt" type="text" size="20" /></li>
+        <li>    <label> Like to visit</label><input id="tovisit" name="plctovisit" class="txt" type="text" size="20" /></li>
+              <li><label>Comments </label><br/><textarea id="feedback" class="txt" name="feedback" rows="3" cols="40"></textarea></li>
+              <input type="submit" id="Update" class="btn" value="update"/>
+		</form>
+		</div>
+		
+		<div class="footer">
+			
+		</div>
+	</div>
+	</body>
+</html>

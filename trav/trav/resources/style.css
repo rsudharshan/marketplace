@@ -1,0 +1,134 @@
+.fact
+{
+color:#AABBDD;
+cursor:pointer;
+}
+
+.header
+{
+width:960px;
+ height:100px;
+color:#0069D6;
+font-size:14px;
+padding:10px;
+}
+
+.content
+{
+width:960px;
+ height:640px;
+padding:10px;
+}
+
+.btn
+{
+	background-color:#DEDEDE;
+	color:#0069D6;
+	width:80px;
+	min-height:20px;
+	height:auto;
+	font-size:14px;
+	font-family:"Lucida Sans Unicode";
+	padding:5px;
+	display:inline-block;
+	text-align: center;
+	vertical-align: middle;
+	-webkit-border-radius:15px;
+	-webkit-user-select:none;
+
+}
+
+.btn:hover
+{
+	background-color:#0069D6;
+	color:#F2F2F2;
+	cursor: pointer;
+}
+
+.login
+{
+	float: right;
+}
+.txt {
+ 	padding: 5px;
+ 	padding-left:10px;
+ 	padding-right:10px;
+border: 1px solid #D8DEE2;
+margin: .2em 0 1em 0;
+-webkit-border-radius:15px;
+width:auto;
+color:#789;
+}
+ 
+.footer
+{
+width:960px;
+height:60px;
+color:#AAAAAA;
+font-size:18px;
+padding:10px;
+}
+
+.container
+{
+ width:960px;
+ height:800px;
+ margin-left:auto;
+ margin-right:auto;
+}
+
+body
+{
+margin:0;
+padding:0;
+border:0;
+background-color:#F2F2F2;
+font-family:"Calibri";
+color:#0069D6;
+
+}
+
+#frm
+{
+	float: right;
+	margin-right: 50px;
+}
+li
+{
+	list-style-type: none;
+}
+li label
+{
+	width: 100px;
+	display: inline-block;
+}
+li input,li textarea
+{
+padding: 5px;
+border: 1px solid #D8DEE2;
+ 	padding-left:10px;
+ 	padding-right:10px;
+margin: .2em 0 1em 0;
+-webkit-border-radius:15px;
+width:200px;
+color:#789;
+
+}
+li input:focus
+{
+	border-color: rgba(82, 168, 236, 0.8);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  outline: 0;
+  outline: thin dotted \9;
+}
+.txt:focus
+{
+ border-color: rgba(82, 168, 236, 0.8);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  outline: 0;
+  outline: thin dotted \9;
+}
