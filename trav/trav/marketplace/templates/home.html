@@ -10,10 +10,23 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){
-			 $('#search').bind('click',function (){
-				 	searchkey=$('#srch').val()
-				 	window.location="/search/"+searchkey;
-			      });
+					 $('#search').bind('click',function (){
+						 	searchkey=$('#srch').val()
+						 	window.location="/search/"+searchkey;
+					      });
+					 $('#srch').bind('keypress',function(e){
+					       if(e.keyCode==13)
+					       {
+					       searchkey=$('#srch').val()
+						 	window.location="/search/"+searchkey;
+					       }
+					 });     
+					 $('.cbtn').bind('click',function(){
+					       window.location="/search/"+this.innerHTML;
+					 });
+					 $('#sell').bind('click',function(){
+					       window.location="/sell"
+					 });
 			});
 
 		
@@ -22,9 +35,9 @@
 	<body>
 		<div class="container">
 		<div class="header">
-		 <img align="left" src="/static/Travtar-logo.jpg" width="200" height="100"/> 
+		<a href="/home"> <img  align="left" src="/static/Travtar-logo.jpg" width="200" height="100"/></a> 
 			{% if user %}
-			<div align="right">Hai {{ user }} <a href="/logout">Logout</a></div>
+			<div align="right">Hi {{ user }} <a href="/logout">Logout</a></div>
 			{% else %}
 			<div align="right"> 
 				You are not logged in. 
@@ -32,25 +45,30 @@
 			</div>		
 			{% endif %}
 		</div>	
-		<div class="menu">Browse<div class="btn">NewYork</div>
-			<div class="btn">London</div>
-			<div class="btn">Paris</div>
+		<div class="menu">Browse
+		    <div class="cbtn">NewYork</div>
+			<div class="cbtn">London</div>
+			<div class="cbtn">Paris</div>
 			Search
-			<input type="text" class="txt" id="srch" size="30" name="srchbox"/>
-			<img id="search" height="25px" align="absmiddle" src="/static/search.png" />
-			<div class="btn">Sell</div></div>	
+			<input type="text" class="txt" id="srch" size="30" placeholder="By title,city,category" name="srchbox"/>
+			<img id="search" height="25px" align="absmiddle" src="/static/search.png"/>
+			<div id="sell" class="btn">Sell</div></div>	
 		<div class="content">	
-		<h2>Find hottest products</h2>
+		<b>Find hottest products</b>  {{ results.count }} Results found 
 				<div class="holder">
+				{% if results %}
 					{% for r in results %}
 				    	<div class="item">				    		
-								<img class="img" src="{{ r.image.url }}" width="100" height="100" align="left"/>
-								<div class="pdetails"><b> {{ r.title }} </b><br/>
-				 				<b> Category : </b> {{ r.category }} <b>Selling in </b> {{ r.city }} <b>by</b> {{ r.sellerid }}<br/>			
+								<a href="/buy/{{ r.id }}"><img class="img" src="{{ r.image.url }}" width="100" height="100" align="left"/></a>
+								<div class="pdetails"><a href="/buy/{{ r.id }}"><b> {{ r.title }} </b></a><br/>
+				 				<b> Category : </b> {{ r.category }} <b>Selling in </b> {{ r.city }} <b>by</b> <a href="/user/{{ r.sellerid }}">{{ r.sellerid }}</a><br/>			
 								<b> Price : {{ r.price }} </b>
 						</div>	
 				    	</div>				    
 				    {% endfor %}
+				{% else %}
+				         <b>No products found</b>
+				{% endif %}
 				    
 				</div>
 				

@@ -8,6 +8,7 @@ from models import profile
 from models import Product
 from forms import LoginForm
 from django import forms
+from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.sessions.models import Session
 def quiz_guess(request, user_id):   
@@ -71,7 +72,7 @@ def sell(request):
 
 def search(request,search):
     u=""
-    products=Product.objects.filter(title=search);
+    products=Product.objects.filter(Q(title__icontains=search) | Q(city__iexact=search) | Q(category__iexact=search));
     if request.session.get("userid"):
         i=request.session.get("userid")
         u=usr.objects.get(id=i)
