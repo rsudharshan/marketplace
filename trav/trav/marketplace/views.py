@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from models import usr
 from models import profile
 from models import Product
-from forms import LoginForm
+from forms import LoginForm,SellForm
 from django import forms
 from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
@@ -60,15 +60,17 @@ def update(request):
 
 def updatepro(request):
     uid=request.session.get("userid")
+    p=usr.objects.get(id=uid)
     u=request.POST["plcvisited"]
     tv=request.POST["plctovisit"]
     fdb=request.POST["feedback"]
-    p=profile(userid=uid,plcvisited=u,plctovisit=tv,user_feedback=fdb)
+    p=profile(userid=p,plcvisited=u,plctovisit=tv,user_feedback=fdb)
     p.save()
     return HttpResponseRedirect("/home")
 
 def sell(request):
-    return render_to_response('sell.html')
+    sellform=SellForm()
+    return render_to_response('sell.html',{'form':sellform})
 
 def search(request,search):
     u=""

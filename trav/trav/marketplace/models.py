@@ -13,7 +13,7 @@ class usr(models.Model):
 
 
 class profile(models.Model):
-    userid=models.IntegerField()
+    userid=models.ForeignKey(usr)
     plcvisited=models.CharField('Places visited',max_length=30)
     plctovisit=models.CharField('Places to Visit',max_length=30)
     user_rating=models.IntegerField('User rating',default=3)
@@ -28,6 +28,7 @@ class Product(models.Model):
     image=models.ImageField('Product Picture',upload_to=".")
     details=models.TextField()
     sellerid=models.PositiveIntegerField()
+    seller=models.ForeignKey(usr)
     expiration_date=models.DateField(null=True,blank=True)
     price=models.DecimalField(max_digits=19,decimal_places=4)
     tags = TaggableManager() 

@@ -12,13 +12,21 @@
 			 $('#search').bind('click',function (){
 				 	
 			});
+			$('#Updates').click(function(){
+		plctovisit=$('#plcvisit').val()
+	 	tovisit=$('#tovisit').val()
+	 	feedback=$('#feedback').val()	 
+	 $.post("/updatepro/",{plc:plctovisit,tovis:tovisit,fdback:feedback}, function(data) {
+         alert(data)
+	 });
+		});
 	});		
 </script>
 	</head>
 	
 	<body>
 		<div class="container">
-		<div class="header"><img align="left" src="/static/Travtar-logo.jpg" width="200" height="100"/>
+		<div class="header"><img align="left" src="/static/travtar.jpg" width="200" height="100"/>
 			{% if user %}
 			<div align="right">Hai {{ user }} <a href="/logout">Logout</a></div>
 			{% else %}
@@ -36,8 +44,14 @@
 			<img id="search" height="25px" align="absmiddle" src="/static/search.png" />
 			<div class="btn">Sell</div></div>	
 		<div class="content">	
-			
-				
+	<div class="sellform">
+	<h2>Sell your product</h2>
+	<h3>Enter Product details</h3>
+		<form action="." method="POST">
+			  {{ form.as_ul }}
+			  <input type="submit" id="sell" class="btn" value="Sell"/>
+		</form>
+	</div>
 		</div>		
 		<div class="footer">						
 		</div>
