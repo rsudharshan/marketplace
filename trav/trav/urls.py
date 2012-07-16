@@ -6,7 +6,7 @@ from marketplace.views import signup
 from django.views.static import *
 from marketplace.views import update,logout,sell,search
 from marketplace.views import authenticate
-from marketplace.views import updatepro
+from marketplace.views import updatepro,updatesell
 from django.conf import settings
 from settings import DEBUG
 # Uncomment the next two lines to enable the admin:
@@ -24,6 +24,7 @@ url(r'^updatepro/',updatepro),
 url(r'^verify/',authenticate),
 url(r'^signup/$',signup),
 url(r'^sell/$',sell),
+url(r'^updatesell/',updatesell),
 url(r'^logout/$',logout),
 
 # Uncomment the admin/doc line below to enable admin documentation:

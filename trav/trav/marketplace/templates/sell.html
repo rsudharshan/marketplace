@@ -9,17 +9,7 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){
-			 $('#search').bind('click',function (){
-				 	
-			});
-			$('#Updates').click(function(){
-		plctovisit=$('#plcvisit').val()
-	 	tovisit=$('#tovisit').val()
-	 	feedback=$('#feedback').val()	 
-	 $.post("/updatepro/",{plc:plctovisit,tovis:tovisit,fdback:feedback}, function(data) {
-         alert(data)
-	 });
-		});
+			 
 	});		
 </script>
 	</head>
@@ -28,7 +18,7 @@
 		<div class="container">
 		<div class="header"><img align="left" src="/static/travtar.jpg" width="200" height="100"/>
 			{% if user %}
-			<div align="right">Hai {{ user }} <a href="/logout">Logout</a></div>
+			<div align="right">Hai {{ user }}  <a href="/logout">Logout</a></div>
 			{% else %}
 			<div align="right"> 
 				You are not logged in. 
@@ -47,13 +37,14 @@
 	<div class="sellform">
 	<h2>Sell your product</h2>
 	<h3>Enter Product details</h3>
-		<form action="." method="POST">
+		<form action="/updatesell/" method="POST">
 			  {{ form.as_ul }}
 			  <input type="submit" id="sell" class="btn" value="Sell"/>
 		</form>
 	</div>
 		</div>		
-		<div class="footer">						
+		<div class="footer">		
+						
 		</div>
 	</div>
 	</body>

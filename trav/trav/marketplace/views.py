@@ -70,7 +70,32 @@ def updatepro(request):
 
 def sell(request):
     sellform=SellForm()
-    return render_to_response('sell.html',{'form':sellform})
+    if request.session.get("userid"):
+        i=request.session.get("userid")
+        u=usr.objects.get(id=i)
+    return render_to_response('sell.html',{'user':u,'form':sellform})
+
+def updatesell(request):
+    if request.method=="POST":
+        form=SellForm(request.POST)
+        if form.is_valid():
+            tit=request.POST["title"]
+            cty=request.POST["city"]
+            cat=request.POST["category"]
+            pr=request.POST["price"]
+            img=request.POST["image"]
+            tgs=request.POST["tags"]
+            xpirydate=request.POST["expirydate"]
+            if request.session.get("userid"):
+                i=request.session.get("userid")
+                u=usr.objects.get(id=i)
+            p=Product(title=tit,city=cty,category=cat,price=pr,image=img,tags=tgs,expirydate=xpirydate,sellerid=i,seller=u)
+            p.save()
+            return HttpResponse("ok")
+        else:
+            form=SellForm()
+            return render(request, 'contact.html', {'form': form,})
+             
 
 def search(request,search):
     u=""
