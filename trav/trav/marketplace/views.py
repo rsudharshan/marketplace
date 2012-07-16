@@ -5,12 +5,11 @@ from django.utils import simplejson
 from django.shortcuts import get_object_or_404
 from models import usr
 from models import profile
+from models import Product
 from forms import LoginForm
 from django import forms
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.sessions.models import Session
-from django.views.generic import simple
-from models import Product
 def quiz_guess(request, user_id):   
   message = {"fname": "", "lname": ""}
   if request.is_ajax():
@@ -21,7 +20,6 @@ def quiz_guess(request, user_id):
     message = "You're the lying type, I can just tell."
   json = simplejson.dumps(message)
   return HttpResponse(json, mimetype='application/json')
-
 def authenticate(request):
     csrf_exempt(authenticate)
     user=request.POST["username"]
@@ -32,8 +30,10 @@ def authenticate(request):
         if u is not None:
             request.session['userid'] = u.id
             message = {"uid": u.id, "uname": user,"status":"success"}
+
         else:
             message={"status": "fail"}
+
         json=simplejson.dumps(message)
     return HttpResponse(json,mimetype="application/json")
 
@@ -66,19 +66,28 @@ def updatepro(request):
     p.save()
     return HttpResponseRedirect("/home")
 
-def logout(request):
-    del request.session['userid']
-    html="<html><body>You are successfully logged out</body></html>"
-    return HttpResponse(html)
+def sell(request):
+    return render_to_response('sell.html')
 
-def home(request):
+def search(request,search):
     u=""
+    products=Product.objects.filter(title=search);
     if request.session.get("userid"):
         i=request.session.get("userid")
         u=usr.objects.get(id=i)
-    return render_to_response('home.html',{'user':u})
+    return render_to_response('home.html',{'user':u,'results':products})
+
+def logout(request):
+    del request.session['userid']
+    html="<html><body>You are successfully logged out</body></html>"
+    return HttpResponseRedirect('/hello')
+
+def home(request):
+    u=""
+    products=Product.objects.all();
+    if request.session.get("userid"):
+        i=request.session.get("userid")
+        u=usr.objects.get(id=i)
+    return render_to_response('home.html',{'user':u,'results':products})
     #html="<html><body>Hai ",u.username,"</body></html>"
     #return HttpResponse(html)
-        
-def show_object(request):
-    return simple.direct_to_template(request, 'home.html', extra_context={'objects':Product.objects.all()})

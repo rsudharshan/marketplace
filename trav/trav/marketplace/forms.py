@@ -15,5 +15,7 @@ class UpdateProfile(forms.Form):
     Visited=forms.CharField(max_length=30)
     ToVisit=forms.CharField(max_length=30)
     Feedback=forms.CharField(widget=forms.Textarea)
+
+    
     
 

@@ -2,18 +2,17 @@ from django.conf.urls.defaults import patterns, include, url
 from marketplace.views import hello
 from marketplace.views import quiz_guess
 from marketplace.views import home
-from marketplace.views import signup,show_object
+from marketplace.views import signup
 from django.views.static import *
-from marketplace.views import update,logout
+from marketplace.views import update,logout,sell,search
 from marketplace.views import authenticate
 from marketplace.views import updatepro
 from django.conf import settings
 from settings import DEBUG
-from django.views.generic.simple import direct_to_template
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
-imgroot=settings.MEDIA_ROOT,"/prdimg"
+PRDIMG_ROOT="%s%s",settings.STATIC_ROOT,"prdimg/"
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'trav.views.home', name='home'),
@@ -21,17 +20,22 @@ urlpatterns = patterns('',
 url(r'^hello/',hello),
 url(r'^home/',home),
 url(r'^update/',update),
-url(r'^show/',show_object),
-
 url(r'^updatepro/',updatepro),
 url(r'^verify/',authenticate),
 url(r'^signup/$',signup),
+url(r'^sell/$',sell),
 url(r'^logout/$',logout),
 
 # Uncomment the admin/doc line below to enable admin documentation:
 url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-url(r'^media/prdimg/(?P<path>.*)$', 'django.views.static.serve', {'document_root': imgroot}),
-url(r'^test/(?P<user_id>\d+)/$',quiz_guess,name='quiz_guess'),
+url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+url(r'^static/prdimg/(?P<path>.*)$', 'django.views.static.serve', {'document_root': PRDIMG_ROOT}),
+url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+url(r'^search/(?P<search>\w+)/$',search,name='search'),
+
+
+url(r'^test/(?P<user_id>\w+)/$',quiz_guess,name='quiz_guess'),
+
 # Uncomment the next line to enable the admin:
      url(r'^admin/', include(admin.site.urls)),
 )

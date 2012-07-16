@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,18 +10,15 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 			 $('#search').bind('click',function (){
-				 	searchkey=$('#srch').val()
-				 	window.location="/search/"+searchkey;
-			      });
+				 	
 			});
-
-		
+	});		
 </script>
 	</head>
+	
 	<body>
 		<div class="container">
-		<div class="header">
-		 <img align="left" src="/static/Travtar-logo.jpg" width="200" height="100"/> 
+		<div class="header"><img align="left" src="/static/Travtar-logo.jpg" width="200" height="100"/>
 			{% if user %}
 			<div align="right">Hai {{ user }} <a href="/logout">Logout</a></div>
 			{% else %}
@@ -40,23 +36,7 @@
 			<img id="search" height="25px" align="absmiddle" src="/static/search.png" />
 			<div class="btn">Sell</div></div>	
 		<div class="content">	
-		<h2>Find hottest products</h2>
-				<div class="holder">
-					{% for r in results %}
-				    	<div class="item">				    		
-								<img class="img" src="{{ r.image.url }}" width="100" height="100" align="left"/>
-								<div class="pdetails"><b> {{ r.title }} </b><br/>
-				 				<b> Category : </b> {{ r.category }} <b>Selling in </b> {{ r.city }} <b>by</b> {{ r.sellerid }}<br/>			
-								<b> Price : {{ r.price }} </b>
-						</div>	
-				    	</div>				    
-				    {% endfor %}
-				    
-				</div>
-				
-				
-						
-							
+			
 				
 		</div>		
 		<div class="footer">						

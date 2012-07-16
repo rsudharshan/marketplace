@@ -18,11 +18,36 @@ padding:10px;
 width:960px;
  height:640px;
 padding:10px;
+font-size: 12px;
 }
-
+.img
+{
+padding:5px;
+}
+.pdetails
+{
+padding:5px;
+margin-left:10px;
+font-size:14px;
+color:#F2F2F2;
+}
+.item
+{
+height:125px;
+width:800px;
+cursor:pointer;
+}
+.item:hover
+{
+background-color:#789;
+}
+.holder
+{
+background-color:#888;
+-webkit-border-radius:10px;
+}
 .btn
 {
-	background-color:#DEDEDE;
 	color:#0069D6;
 	width:80px;
 	min-height:20px;
@@ -36,6 +61,21 @@ padding:10px;
 	-webkit-border-radius:15px;
 	-webkit-user-select:none;
 
+}
+#search
+{
+	cursor: pointer;
+}
+.menu
+{
+	background-color:#F2F2F2;
+color: #123;
+font-size:14px;
+	width:950px;
+	height: auto;
+	padding:10px;
+	
+		font-family:"Lucida Sans Unicode";
 }
 
 .btn:hover
@@ -84,6 +124,8 @@ padding:0;
 border:0;
 background-color:#F2F2F2;
 font-family:"Calibri";
+font-size: 10px;
+
 color:#0069D6;
 
 }

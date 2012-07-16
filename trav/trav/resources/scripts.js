@@ -12,11 +12,11 @@ $(document).ready(function() {
       $.post("/verify/",{username:usr,password:pwd}, function(data) { 
           if(data.status=="success")
           {
-               window.location="/home"                                
+             window.location="/home"                                
           }
-          if(data.status="fail")
+          if(data.status=="fail")
           {
-          	               $('.content').html("Username or Password Incorrect, Login again");                                 
+          	 $('.content').html("Username or Password Incorrect, Login again");                                 
 
           }
          });

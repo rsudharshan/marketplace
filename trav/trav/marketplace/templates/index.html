@@ -10,16 +10,17 @@
 </head>
 <body>
 <div class="container">
-<div class="header">
+<div class="header"><img align="left" src="/static/Travtar-logo.jpg" width="200" height="100"/>
 	<div class="login">
 		<form id="frm" action="/verify/" method="POST">
-              Username<input id="usr" name="username" class="txt" type="text" size="20" />
+               Username<input id="usr" name="username" class="txt" type="text" size="20" />
               Password<input id="pwd" name="password" class="txt" type="password" size="20" />
               <span type="submit" id="login" class="btn" value="Login">Login</span>
 		</form>
 	</div></div>
 <div class="content">
 <form id="frm" method="POST" action="/hai/">
+	<h2>Its simple. Sign Up</h2>
 {{ form.as_ul }}
 <span id="signup" class="btn">Sign Up</span>
 </form>
